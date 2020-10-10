@@ -73,18 +73,17 @@ function SearchBox() {
 				</div>
             </div>
 
-            
-            {showMovies && (
-                <>
-                <DisplayMovies
-                    alldetails={MainMovie}
-                    setshowSuggetions={setshowSuggetions}
-                    setMainMovie={setMainMovie}
-                    movie={MainMovie.release_date ? true : false}
-                    type={MainMovie.media_type}
-                />
-                </>
-            )}
+				{showMovies && (
+					<>
+					<DisplayMovies
+						alldetails={MainMovie}
+						setshowSuggetions={setshowSuggetions}
+						setMainMovie={setMainMovie}
+						movie={MainMovie.release_date ? true : false}
+						type={MainMovie.media_type}
+					/>
+					</>
+					)}
     </>
     )
 }

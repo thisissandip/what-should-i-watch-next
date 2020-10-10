@@ -11,7 +11,7 @@ function SuggestedMovie({poster, item, setMainMovie, setshowSuggetions }) {
     }
     const add_to_dom = () => {
 		const all_sug_movie = document.querySelector(".all-display-movie-cont");
-        all_sug_movie.style.width = "100%";
+        all_sug_movie.style.bottom = "1rem";
 
     } 
 
@@ -25,7 +25,7 @@ function SuggestedMovie({poster, item, setMainMovie, setshowSuggetions }) {
     
     const animate_sug_div = () => {
         const all_sug_movie = document.querySelector(".all-display-movie-cont");
-        all_sug_movie.style.width = "0%";
+        all_sug_movie.style.bottom = "-20rem";
     }
 
     return (
@@ -36,7 +36,7 @@ function SuggestedMovie({poster, item, setMainMovie, setshowSuggetions }) {
                     animate_sug_div();
                     setTimeout(() => {
                         setMainMovie(item);
-                    },800)
+                    },500)
 				setshowSuggetions(false);
 				console.log(item);
                 }}

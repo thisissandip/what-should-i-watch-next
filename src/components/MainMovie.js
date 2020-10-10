@@ -21,7 +21,6 @@ function MainMovie({ alldetails }) {
             rem_frm_dom();
         setTimeout(() => {
             add_to_dom();
-            setfirstmount(true);
         }, 1000);
     }, [alldetails.id])
     
