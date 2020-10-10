@@ -8,13 +8,13 @@ function MainMovie({ alldetails }) {
 
     const rem_frm_dom = () => {
         const mainposter = document.querySelector(".main-poster");
-        mainposter.style.height = "0px";
+        mainposter.style.height = "0%";
     }
 
     const add_to_dom = () => {
         const mainposter = document.querySelector(".main-poster");
         mainposter.src = `https://image.tmdb.org/t/p/original${alldetails.poster_path}`;
-        mainposter.style.height = "300px";
+        mainposter.style.height = "100%";
     }
     
     useEffect(() => {

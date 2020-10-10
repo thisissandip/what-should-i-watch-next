@@ -1,44 +1,47 @@
 import React,{useState} from 'react'
 import { useEffect } from 'react';
 
-function SuggestedMovie({ item, setMainMovie, setshowSuggetions }) {
+function SuggestedMovie({poster, item, setMainMovie, setshowSuggetions }) {
     
     const rem_frm_dom = () => {
-        const all_sug_movie = document.querySelectorAll(".suggested-movie");
+        const all_sug_movie = document.querySelectorAll(".all-display-movie-cont");
         all_sug_movie.forEach(item => {
             item.style.width = "0px";
         })
-
-        const sugmoviecont = document.querySelector(".all-display-movie-cont");
-        sugmoviecont.style.opacity = "0";
     }
     const add_to_dom = () => {
-		const all_sug_movie = document.querySelectorAll(".suggested-movie");
-        all_sug_movie.forEach(item => {
-            item.style.width = "141px";
-        })
-        const sugmoviecont = document.querySelector(".all-display-movie-cont");
-        sugmoviecont.style.opacity = "1";
+		const all_sug_movie = document.querySelector(".all-display-movie-cont");
+        all_sug_movie.style.width = "100%";
+
     } 
 
     useEffect(() => {
-        rem_frm_dom();
+        /* rem_frm_dom(); */
         setTimeout(() => {
             add_to_dom();
         }, 500);
 
-    },[item.id])
+    }, [item.id])
+    
+    const animate_sug_div = () => {
+        const all_sug_movie = document.querySelector(".all-display-movie-cont");
+        all_sug_movie.style.width = "0%";
+    }
 
     return (
         <>
             <img
                 	className='suggested-movie'
-			onClick={() => {
-				setMainMovie(item);
+                onClick={() => {
+                    animate_sug_div();
+                    setTimeout(() => {
+                        setMainMovie(item);
+                    },800)
 				setshowSuggetions(false);
 				console.log(item);
-			}}
-			src={`https://image.tmdb.org/t/p/original${item.poster_path}`} >
+                }}
+                src={`https://image.tmdb.org/t/p/original${poster}`}
+			 >
 		</img>
     </>
     )

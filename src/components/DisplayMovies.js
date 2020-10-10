@@ -76,7 +76,7 @@ function DisplayMovie({
 	}, [moviesarray])
 
  	const suggested = moviesarray.map((item) => (
-		<SuggestedMovie key={item.id} setMainMovie={setMainMovie} setshowSuggetions={setshowSuggetions} item={item} />
+		<SuggestedMovie key={item.id} poster={item.poster_path} setMainMovie={setMainMovie} setshowSuggetions={setshowSuggetions} item={item} />
 	)); 
 
 	return (

@@ -28,9 +28,3 @@
 	transition: 1.5s opacity ease-in;
 	height: 100vh;
 }
-
-.main-movie-container {
-	position: absolute;
-	display: inline-block;
-	background-color: blueviolet;
-}
