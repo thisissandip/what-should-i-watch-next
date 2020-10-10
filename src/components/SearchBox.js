@@ -1,11 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import MainMovieComp from './MainMovie';
-import SuggestedMovie from './SuggestedMovie';
 import endpoints from '../apifetches';
+import { FaSearch } from 'react-icons/fa';
+import DisplayMovies from './DisplayMovies';
+
 
 function SearchBox() {
-	const [UserInput, setUserInput] = useState('');
+    const [UserInput, setUserInput] = useState('');
 	const [Suggestions, setSuggetions] = useState([]);
 	const [showSuggestions, setshowSuggetions] = useState(false);
 	const [MainMovie, setMainMovie] = useState({});
@@ -22,57 +23,70 @@ function SearchBox() {
 				)
 					.then((response) => response.json())
 					.then((responsedata) => {
-						const filteredmovies = responsedata.results.slice(0, 5);
+						const moviearray = responsedata.results;
+						const filteredname = moviearray.filter(item => item.original_name!==null && item.backdrop_path!==null );
+						const filteredmovies = filteredname.slice(0,5);
 						setSuggetions(filteredmovies);
 					});
-			}, 1000);
+			}, 500);
+        }
+	if (UserInput.length === 0) {
+			setshowSuggetions(false);
 		}
-	}, [UserInput]);
+    }, [UserInput]);
 
-	const displaysugesstions = Suggestions.map((item) => (
+    const SET_DISPLAY_REM_SUGGESTION = (item) => {
+        setMainMovie(item);
+        setshowSuggetions(false);
+        setUserInput('');
+        setshowMovies(true);
+    }
+
+    const displaysugesstions = Suggestions.map((item) => (
 		<div
-			key={item.id}
 			onClick={() => {
-				setshowMovies(true);
-				setMainMovie(item);
-				setshowSuggetions(false);
+                SET_DISPLAY_REM_SUGGESTION(item) 
 				console.log(item);
-			}}
-			className='suggestions select-movie'>
+            }}
+			key={item.id}
+			className='suggestions-list-movie'>
 			{item.original_title || item.original_name}{' '}
-			{item.release_date ? '(Movie)' : '(Series)'}
+            {item.release_date ? '(Movie)' : '(Series)'}
 		</div>
 	));
+    
 
-	return (
-		<div className='searchbox'>
-			<input
-				type='text'
-				value={UserInput}
-				onChange={(e) => setUserInput(e.target.value)}
-			/>
-			{showSuggestions && displaysugesstions}
+    return (
+        <>
+            <div className='searchbox-cont'>
+				<div className='input-cont'>
+					<FaSearch className='search-icon' />
+                    <input
+						className='searchbox'
+						type='text'
+						value={UserInput}
+						onChange={(e) => setUserInput(e.target.value)}
+					/>
+				</div>
+				<div className='suggestion-cont'>
+					{showSuggestions && displaysugesstions}
+				</div>
+            </div>
 
-			{showMovies && (
-				<>
-					{' '}
-					<MainMovieComp
-						alldetails={MainMovie}
-						id={MainMovie.id}
-						name={MainMovie.original_name || MainMovie.original_title}
-					/>
-					<SuggestedMovie
-						id={MainMovie.id}
-						setshowSuggetions={setshowSuggetions}
-						setMainMovie={setMainMovie}
-						lang={MainMovie.original_language}
-						movie={MainMovie.release_date ? true : false}
-						type={MainMovie.media_type}
-					/>
-				</>
-			)}
-		</div>
-	);
+            
+            {showMovies && (
+                <>
+                <DisplayMovies
+                    alldetails={MainMovie}
+                    setshowSuggetions={setshowSuggetions}
+                    setMainMovie={setMainMovie}
+                    movie={MainMovie.release_date ? true : false}
+                    type={MainMovie.media_type}
+                />
+                </>
+            )}
+    </>
+    )
 }
 
-export default SearchBox;
+export default SearchBox

@@ -1,63 +1,47 @@
-import React, { useEffect } from 'react';
-import endpoints from '../apifetches';
-import { useState } from 'react';
+import React,{useState} from 'react'
+import { useEffect } from 'react';
 
-function SuggestedMovie({
-	id,
-	type,
-	movie,
-	lang,
-	setMainMovie,
-	setshowSuggetions,
-}) {
-	const [moviesarray, setmoviesarray] = useState([]);
+function SuggestedMovie({ item, setMainMovie, setshowSuggetions }) {
+    
+    const rem_frm_dom = () => {
+        const all_sug_movie = document.querySelectorAll(".suggested-movie");
+        all_sug_movie.forEach(item => {
+            item.style.width = "0px";
+        })
 
-	useEffect(() => {
-		const fetchMovies = async () => {
-			let response;
-			if (movie || type === 'movie') {
-				response = await fetch(
-					`https://api.themoviedb.org/3/movie/${id}/` + endpoints.getSimilar
-				);
-			} else {
-				response = await fetch(
-					`https://api.themoviedb.org/3/tv/${id}/` + endpoints.getSimilar
-				);
-			}
-			let data = await response.json();
-			const sameLangMovies = data.results.filter(
-				(item) => item.original_language === lang
-			);
+        const sugmoviecont = document.querySelector(".all-display-movie-cont");
+        sugmoviecont.style.opacity = "0";
+    }
+    const add_to_dom = () => {
+		const all_sug_movie = document.querySelectorAll(".suggested-movie");
+        all_sug_movie.forEach(item => {
+            item.style.width = "141px";
+        })
+        const sugmoviecont = document.querySelector(".all-display-movie-cont");
+        sugmoviecont.style.opacity = "1";
+    } 
 
-			if (sameLangMovies.length > 5) {
-				setmoviesarray(sameLangMovies.slice(0, 15));
-			} else {
-				setmoviesarray(data.results.slice(0, 15));
-			}
-		};
-		fetchMovies();
-	}, [id]);
+    useEffect(() => {
+        rem_frm_dom();
+        setTimeout(() => {
+            add_to_dom();
+        }, 500);
 
-	const suggested = moviesarray.map((item) => (
-		// Call a display suggestion Component
-		<div
-			key={item.id}
+    },[item.id])
+
+    return (
+        <>
+            <img
+                	className='suggested-movie'
 			onClick={() => {
 				setMainMovie(item);
 				setshowSuggetions(false);
 				console.log(item);
 			}}
-			className='suggested-movie'>
-			{item.original_name || item.original_title}
-		</div>
-	));
-
-	return (
-		<div>
-			Suggested:
-			{suggested}
-		</div>
-	);
+			src={`https://image.tmdb.org/t/p/original${item.poster_path}`} >
+		</img>
+    </>
+    )
 }
 
-export default SuggestedMovie;
+export default SuggestedMovie
