@@ -1,19 +1,85 @@
 .main-movie-cont {
 	margin: 0 auto;
-	padding-top: 20px;
+	margin-top: 20px;
 	z-index: 10;
+	overflow: hidden;
 	width: 93%;
 	display: flex;
-	justify-content: space-between;
+	color: white;
 }
 
-.right-main-movie-poster {
-	width: 14%;
+.left-main-movie-poster {
+	width: 210px;
+	height: 300px;
+	transition: 1s all ease-in-out;
 }
 
 .main-poster {
-	cursor: pointer;
 	width: 100%;
-	object-fit: cover;
-	transition: 0.9s all cubic-bezier(0.5, 0.25, 0, 1);
+	object-fit: contain;
+	transition: 1s height cubic-bezier(0.165, 0.84, 0.44, 1),
+		1.4s opacity ease-in-out;
+}
+
+.right-main-movie-details {
+	position: relative;
+	margin-left: 1.5rem;
+	width: 40%;
+	font-family: var(--myfont);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.main-movie-title {
+	font-size: 2.5rem;
+	font-weight: 500;
+	margin-bottom: 10px;
+	line-height: 2.7rem;
+}
+
+.main-movie-des {
+	font-weight: 300;
+	font-size: 1.1rem;
+	margin-bottom: 15px;
+}
+
+.main-movie-details {
+	margin-bottom: 10px;
+}
+
+.read-more {
+	color: grey;
+	cursor: pointer;
+	transition: 0.4s color ease-in-out;
+}
+
+.read-more:hover {
+	color: goldenrod;
+}
+
+.add-to-list {
+	margin-top: 5px;
+}
+
+.add-to-list-icon {
+	font-size: 1.2rem;
+	cursor: pointer;
+}
+
+.add-to-list-icon:hover {
+	transform: scale(1.1);
+}
+
+.add-to-list-title {
+	pointer-events: none;
+	font-size: 1.2rem;
+	margin-left: 5px;
+	font-weight: 200;
+}
+
+.fa-star {
+	font-size: 1rem;
+	margin-right: 5px;
+	color: gold;
 }
