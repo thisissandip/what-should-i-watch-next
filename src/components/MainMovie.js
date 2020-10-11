@@ -7,18 +7,17 @@ function MainMovie({ alldetails }) {
 
     const rem_frm_dom = () => {
         const mainposter = document.querySelector(".main-poster");
-        mainposter.style.height = "0%";
+        mainposter.style.left = "-10rem";
         mainposter.style.opacity = "0";
     }
 
     const add_to_dom = () => {
         const mainposter = document.querySelector(".main-poster");
         mainposter.src = `https://image.tmdb.org/t/p/original${alldetails.poster_path}`;
-        mainposter.style.height = "100%";
+        mainposter.style.left = "0";
         mainposter.style.opacity = "1";
     }
 
-    
     useEffect(() => {
         setTimeout(() => {
             add_to_dom();
@@ -37,7 +36,7 @@ function MainMovie({ alldetails }) {
     return (
         <div className="main-movie-cont">
             <div className="left-main-movie-poster">
-                <img className="main-poster" alt=""/>
+                <img className="main-poster" />
             </div>
 
             <div className="right-main-movie-details">
@@ -54,7 +53,6 @@ function MainMovie({ alldetails }) {
                     <FaRegHeart className="add-to-list-icon"  /> <span className="add-to-list-title">Add to My List</span>
                 </div>
             </div>
-
         </div>
     )
 }

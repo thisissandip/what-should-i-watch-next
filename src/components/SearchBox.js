@@ -33,13 +33,42 @@ function SearchBox() {
 	if (UserInput.length === 0) {
 			setshowSuggetions(false);
 		}
-    }, [UserInput]);
+	}, [UserInput]);
+	
+	useEffect(() => {
+		const defaultitem = {
+				"popularity": 1548.171,
+				"vote_count": 1809,
+				"video": false,
+				"poster_path": "/riYInlsq2kf1AWoGm80JQW5dLKp.jpg",
+				"id": 497582,
+				"adult": false,
+				"backdrop_path": "/kMe4TKMDNXTKptQPAdOF0oZHq3V.jpg",
+				"original_language": "en",
+				"original_title": "Enola Holmes",
+				"genre_ids": [
+				  80,
+				  18,
+				  9648
+				],
+				"title": "Enola Holmes",
+				"vote_average": 7.6,
+				"overview": "While searching for her missing mother, intrepid teen Enola Holmes uses her sleuthing skills to outsmart big brother Sherlock and help a runaway lord.",
+				"release_date": "2020-09-23"
+		}
 
-    const SET_DISPLAY_REM_SUGGESTION = (item) => {
+		SET_DISPLAY_REM_SUGGESTION(defaultitem);
+	},[])
+
+	const SET_DISPLAY_REM_SUGGESTION = (item) => {
+		if (showMovies) {
+			const all_sug_movie = document.querySelector(".all-display-movie-cont");
+			all_sug_movie.style.bottom = "-20rem";
+		}
         setMainMovie(item);
         setshowSuggetions(false);
         setUserInput('');
-        setshowMovies(true);
+		setshowMovies(true);
     }
 
     const displaysugesstions = Suggestions.map((item) => (
@@ -62,6 +91,7 @@ function SearchBox() {
 				<div className='input-cont'>
 					<FaSearch className='search-icon' />
                     <input
+						placeholder="Type a Movie / TV Show that you Love "
 						className='searchbox'
 						type='text'
 						value={UserInput}

@@ -82,6 +82,7 @@ function DisplayMovie({
 	return (
 		<>
 			<MainMovie alldetails={alldetails} />
+			<div className="suggested-title">Similar</div>
 			<div className="suggestion-img-cont-wrapper">
 				<div className="all-display-movie-cont">
 					{suggested} 
