@@ -19,6 +19,7 @@ function MainMovie({ alldetails }) {
     }
 
     useEffect(() => {
+        rem_frm_dom();
         setTimeout(() => {
             add_to_dom();
         }, 1000);
