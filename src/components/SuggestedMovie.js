@@ -12,6 +12,7 @@ function SuggestedMovie({poster, item, setMainMovie, setshowSuggetions }) {
         setTimeout(() => {
             add_to_dom();
         }, 500);
+        console.log(item);
     }, [item.id])
     
     const animate_sug_div = () => {
@@ -31,7 +32,6 @@ function SuggestedMovie({poster, item, setMainMovie, setshowSuggetions }) {
                                 setMainMovie(item);
                             },500)
                         setshowSuggetions(false);
-                        console.log(item);
                         }}
                         src={`https://image.tmdb.org/t/p/original${poster}`}
                     >
