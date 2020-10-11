@@ -5,7 +5,7 @@ function SuggestedMovie({poster, item, setMainMovie, setshowSuggetions }) {
 
     const add_to_dom = () => {
         const all_sug_movie = document.querySelector(".all-display-movie-cont");
-        all_sug_movie.style.bottom = "0rem"; 
+        all_sug_movie.style.bottom = "0";
     } 
 
     useEffect(() => {;
