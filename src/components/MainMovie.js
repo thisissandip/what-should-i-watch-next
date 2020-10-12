@@ -19,6 +19,7 @@ function MainMovie({ alldetails }) {
     }
 
     useEffect(() => {
+        rem_frm_dom();
         setTimeout(() => {
             add_to_dom();
         }, 1000);
@@ -36,7 +37,7 @@ function MainMovie({ alldetails }) {
     return (
         <div className="main-movie-cont">
             <div className="left-main-movie-poster">
-                <img className="main-poster" />
+                <img className="main-poster" src="https://image.tmdb.org/t/p/original/riYInlsq2kf1AWoGm80JQW5dLKp.jpg" />
             </div>
 
             <div className="right-main-movie-details">
