@@ -19,7 +19,13 @@ function MainMovie({ alldetails }) {
     }
 
     useEffect(() => {
-        rem_frm_dom();
+        const mainposter = document.querySelector(".main-poster");
+        mainposter.style.opacity = "1";
+        const mainmoviedeets = document.querySelector(".right-main-movie-details ");
+        mainmoviedeets.style.opacity = "1";
+    }, [])
+
+    useEffect(() => {
         setTimeout(() => {
             add_to_dom();
         }, 1000);

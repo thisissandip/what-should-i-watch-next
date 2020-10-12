@@ -7,9 +7,9 @@ function Home() {
 		<>
 			<div className="movie-bg"></div>
 			<div className="movie-bg-2"></div>
-
+			<div className="all-elements">
 				<SearchBox />
-
+			</div>
 		</>
 	);
 }
