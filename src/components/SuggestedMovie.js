@@ -19,7 +19,7 @@ function SuggestedMovie({poster, item, setMainMovie, setshowSuggetions }) {
     
     const animate_sug_div = () => {
         const all_sug_movie = document.querySelector(".all-display-movie-cont");
-        all_sug_movie.style.bottom = "-20rem";
+        all_sug_movie.style.bottom = "-40rem";
     /* fade out details of main movie */
     const mainmoviedeets = document.querySelector(".right-main-movie-details ");
     mainmoviedeets.style.opacity = "0";

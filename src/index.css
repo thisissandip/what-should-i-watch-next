@@ -53,4 +53,11 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
 }
+
+/* to do:
+first mount fix
+suggesttion list cont width resposn
+readmore
+add to list */

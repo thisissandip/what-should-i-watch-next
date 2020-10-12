@@ -7,14 +7,12 @@ function MainMovie({ alldetails }) {
 
     const rem_frm_dom = () => {
         const mainposter = document.querySelector(".main-poster");
-        mainposter.style.left = "-10rem";
         mainposter.style.opacity = "0";
     }
 
     const add_to_dom = () => {
         const mainposter = document.querySelector(".main-poster");
         mainposter.src = `https://image.tmdb.org/t/p/original${alldetails.poster_path}`;
-        mainposter.style.left = "0";
         mainposter.style.opacity = "1";
     }
 

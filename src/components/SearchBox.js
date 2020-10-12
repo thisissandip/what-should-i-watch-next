@@ -63,7 +63,7 @@ function SearchBox() {
 	const SET_DISPLAY_REM_SUGGESTION = (item) => {
 		if (showMovies) {
 			const all_sug_movie = document.querySelector(".all-display-movie-cont");
-			all_sug_movie.style.bottom = "-20rem";
+			all_sug_movie.style.bottom = "-40rem";
 		}
         setMainMovie(item);
         setshowSuggetions(false);

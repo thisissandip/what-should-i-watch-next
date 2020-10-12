@@ -88,3 +88,46 @@
   margin-right: 5px;
   color: gold;
 }
+
+@media screen and (width: 1280px) and (height: 800px) {
+  .left-main-movie-poster {
+    width: 280px;
+    margin-left: -10px;
+  }
+
+  .main-poster {
+    height: 350px;
+  }
+}
+
+@media screen and (width: 1440px) and (height: 900px) {
+  .left-main-movie-poster {
+    width: 350px;
+    margin-left: -25px;
+  }
+
+  .main-poster {
+    height: 420px;
+  }
+
+  .suggested-movie {
+    width: 10.2vw;
+    height: 15.5vw;
+  }
+}
+
+@media screen and (width: 2560px) and (height: 1080px) {
+  .left-main-movie-poster {
+    width: 350px;
+    margin-left: -10px;
+  }
+
+  .main-poster {
+    height: 420px;
+  }
+
+  .suggested-movie {
+    width: 10vw;
+    height: 15.5vw;
+  }
+}
