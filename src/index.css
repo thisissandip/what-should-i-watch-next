@@ -54,10 +54,10 @@ body {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  transition: 1s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* to do:
-first mount fix
-suggesttion list cont width resposn
-readmore
-add to list */
+add to list
+
+issues: same search problem*/

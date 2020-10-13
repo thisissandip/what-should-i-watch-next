@@ -32,11 +32,16 @@ function MainMovie({ alldetails }) {
         }
     }, [alldetails.id])
 
-/*     const ReadMore = () => {
+    const ReadMore = () => {
         const right_details = document.querySelector(".right-main-movie-details");
         right_details.style.width = "70%";
-        document.querySelector(".main-movie-des").innerHTML = alldetails.overview;
-    } */
+        const more_des = document.querySelector(".more-des");
+        more_des.style.display = "initial";
+        const read_more_btn = document.querySelector(".read-more");
+        read_more_btn.style.display = "none";
+        const dots = document.querySelector(".dots");
+        dots.style.display = "none";
+    } 
     
     return (
         <div className="main-movie-cont">
@@ -49,7 +54,21 @@ function MainMovie({ alldetails }) {
                     {alldetails.original_title || alldetails.original_name }
                 </div>
                 <div className="main-movie-des">
-                    {alldetails.overview.length < 300 ? alldetails.overview : <p>{alldetails.overview.slice(0, 240)} <span /* onClick={ReadMore} */ className="read-more" href="#"> Read More</span> </p> }
+                    {alldetails.overview.length < 300 ? alldetails.overview :
+                        <p className="main-movie-des-para">
+                            <span className="less-des">
+                                {alldetails.overview.slice(0, 200)}
+                            </span>
+                            <span className="dots">
+                                ...
+                            </span>
+                            <span className="more-des">
+                                {alldetails.overview.slice(200, alldetails.overview.length)}
+                            </span>
+                            <span onClick={() => { ReadMore() }} className="read-more">
+                                Read More
+                            </span>
+                        </p>}
                 </div>
                 <div className="main-movie-details">
                   <FaStar className="fa-star" />  {alldetails.vote_average} / 10

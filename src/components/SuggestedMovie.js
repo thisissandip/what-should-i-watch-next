@@ -25,6 +25,19 @@ function SuggestedMovie({poster, item, setMainMovie, setshowSuggetions }) {
     mainmoviedeets.style.opacity = "0";
     }
 
+    const remove_more_details = () => {
+        const right_details = document.querySelector(".right-main-movie-details");
+        right_details.style.width = "40%";
+        const more_des = document.querySelector(".more-des");
+        const read_more_btn = document.querySelector(".read-more");
+        const dots = document.querySelector(".dots");
+        if (more_des !== null) {
+            more_des.style.display = "none";
+            read_more_btn.style.display = "initial";
+            dots.style.display = "initial";
+        }
+    }
+
     return (
         <>
                     <img
@@ -33,6 +46,8 @@ function SuggestedMovie({poster, item, setMainMovie, setshowSuggetions }) {
                 onClick={() => {
                     animate_sug_div(); 
                     setTimeout(() => {
+                            remove_more_details(); 
+
                                 setMainMovie(item);
                             },800)
                         setshowSuggetions(false);
