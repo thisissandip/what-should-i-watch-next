@@ -1,9 +1,11 @@
 import React from 'react'
-import { useEffect } from 'react'
-import {FaStar, FaRegHeart} from "react-icons/fa"
+import { useState, useEffect } from 'react'
+import { FaStar} from "react-icons/fa"
 import "./MainMovie.css"
 
 function MainMovie({ alldetails }) {
+
+    const [Fav, setFav] = useState(false)
 
     const rem_frm_dom = () => {
         const mainposter = document.querySelector(".main-poster");
@@ -21,6 +23,12 @@ function MainMovie({ alldetails }) {
         mainposter.style.opacity = "1";
         const mainmoviedeets = document.querySelector(".right-main-movie-details ");
         mainmoviedeets.style.opacity = "1";
+
+    /* GET ITEMS FROM LOCALSTORAGE */
+        let favlist_fromLS = Object.entries(localStorage)
+            .map(item => item[0])
+            .filter(item  => item.startsWith("MOVIE_"));
+        console.log(favlist_fromLS);
     }, [])
 
     useEffect(() => {
@@ -42,6 +50,15 @@ function MainMovie({ alldetails }) {
         const dots = document.querySelector(".dots");
         dots.style.display = "none";
     } 
+
+    const Add_to_LIST = () => {
+        let movie = {
+            id: alldetails.id,
+            name: alldetails.original_title || alldetails.original_name,
+            poster_path: alldetails.poster_path
+        }
+        localStorage.setItem(`MOVIE_${alldetails.original_title || alldetails.original_name}`, JSON.stringify(movie));
+    }
     
     return (
         <div className="main-movie-cont">
@@ -74,7 +91,16 @@ function MainMovie({ alldetails }) {
                   <FaStar className="fa-star" />  {alldetails.vote_average} / 10
                 </div>
                 <div className="add-to-list">
-                    <FaRegHeart className="add-to-list-icon"  /> <span className="add-to-list-title">Add to My List</span>
+                    <input onChange={() =>
+                    {
+                        setFav(!Fav);
+                        Add_to_LIST();
+                    }}
+                        type="checkbox"
+                        id="add-to-list-input"
+                        checked={Fav} />
+                    <label htmlFor="add-to-list-input" id="add-to-list-icon">❤</label>
+                    <span className="add-to-list-title">Add to My List</span>
                 </div>
             </div>
         </div>
