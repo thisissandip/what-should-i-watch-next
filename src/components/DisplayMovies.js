@@ -1,16 +1,10 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import endpoints from '../apifetches';
-import { useState } from 'react';
+import {useState} from 'react';
 import MainMovie from './MainMovie';
 import SuggestedMovie from './SuggestedMovie';
 
-function DisplayMovie({
-	alldetails,
-	type,
-	movie,
-	setMainMovie,
-	setshowSuggetions,
-}) {
+function DisplayMovie({alldetails, type, movie, setMainMovie, setshowSuggetions}) {
 	const backdrop = alldetails.backdrop_path;
 	const id = alldetails.id;
 	const lang = alldetails.original_language;
@@ -62,7 +56,6 @@ function DisplayMovie({
 					(item) => item.poster_path !== null && item.backdrop_path !== null
 				);
 				setmoviesarray(poster_filtered.slice(0, 8));
-				console.log(moviesarray);
 			}
 		};
 

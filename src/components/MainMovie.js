@@ -102,7 +102,7 @@ function MainMovie({alldetails}) {
 			<div className='left-main-movie-poster'>
 				<img
 					className='main-poster'
-					src='https://image.tmdb.org/t/p/original/riYInlsq2kf1AWoGm80JQW5dLKp.jpg'
+					src='https://image.tmdb.org/t/p/original/or06FN3Dka5tukK1e9sl16pB3iy.jpg'
 				/>
 			</div>
 
