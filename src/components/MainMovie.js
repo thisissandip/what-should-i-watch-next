@@ -1,110 +1,156 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import { FaStar} from "react-icons/fa"
-import "./MainMovie.css"
+import React from 'react';
+import {useState, useEffect} from 'react';
+import {FaStar} from 'react-icons/fa';
+import './MainMovie.css';
 
-function MainMovie({ alldetails }) {
+function MainMovie({alldetails}) {
+	/* SET THE INTIAL FAV LIST FROM LOCAL STORAGE */
+	let favlist_fromLS = Object.entries(localStorage)
+		.map((item) => item[1])
+		.map((item) => JSON.parse(item));
 
-    const [Fav, setFav] = useState(false)
+	const [Fav, setFav] = useState(false);
+	const [FavList, setFavList] = useState(favlist_fromLS);
 
-    const rem_frm_dom = () => {
-        const mainposter = document.querySelector(".main-poster");
-        mainposter.style.opacity = "0";
-    }
+	useEffect(() => {
+		const mainposter = document.querySelector('.main-poster');
+		mainposter.style.opacity = '1';
+		const mainmoviedeets = document.querySelector('.right-main-movie-details ');
+		mainmoviedeets.style.opacity = '1';
+	}, []);
 
-    const add_to_dom = () => {
-        const mainposter = document.querySelector(".main-poster");
-        mainposter.src = `https://image.tmdb.org/t/p/original${alldetails.poster_path}`;
-        mainposter.style.opacity = "1";
-    }
+	const rem_frm_dom = () => {
+		const mainposter = document.querySelector('.main-poster');
+		mainposter.style.opacity = '0';
+	};
 
-    useEffect(() => {
-        const mainposter = document.querySelector(".main-poster");
-        mainposter.style.opacity = "1";
-        const mainmoviedeets = document.querySelector(".right-main-movie-details ");
-        mainmoviedeets.style.opacity = "1";
+	const add_to_dom = () => {
+		const mainposter = document.querySelector('.main-poster');
+		mainposter.src = `https://image.tmdb.org/t/p/original${alldetails.poster_path}`;
+		mainposter.style.opacity = '1';
+	};
 
-    /* GET ITEMS FROM LOCALSTORAGE */
-        let favlist_fromLS = Object.entries(localStorage)
-            .map(item => item[0])
-            .filter(item  => item.startsWith("MOVIE_"));
-        console.log(favlist_fromLS);
-    }, [])
+	useEffect(() => {
+		CHECK_IF_MAIN_MOVIE_IS_IN_LSTORAGE();
+		setTimeout(() => {
+			add_to_dom();
+		}, 1000);
+		return () => {
+			rem_frm_dom();
+		};
+	}, [alldetails.id]);
 
-    useEffect(() => {
-        setTimeout(() => {
-            add_to_dom();
-        }, 1000);
-        return () => {
-            rem_frm_dom();
-        }
-    }, [alldetails.id])
+	const ReadMore = () => {
+		const right_details = document.querySelector('.right-main-movie-details');
+		right_details.style.width = '70%';
+		const more_des = document.querySelector('.more-des');
+		more_des.style.display = 'initial';
+		const read_more_btn = document.querySelector('.read-more');
+		read_more_btn.style.display = 'none';
+		const dots = document.querySelector('.dots');
+		dots.style.display = 'none';
+	};
 
-    const ReadMore = () => {
-        const right_details = document.querySelector(".right-main-movie-details");
-        right_details.style.width = "70%";
-        const more_des = document.querySelector(".more-des");
-        more_des.style.display = "initial";
-        const read_more_btn = document.querySelector(".read-more");
-        read_more_btn.style.display = "none";
-        const dots = document.querySelector(".dots");
-        dots.style.display = "none";
-    } 
+	const Add_OR_REM_to_LIST = () => {
+		let movie = {
+			id: alldetails.id,
+			name: alldetails.original_title || alldetails.original_name,
+			poster_path: alldetails.poster_path,
+			vote: alldetails.vote_average,
+		};
+		if (!Fav) {
+			localStorage.setItem(
+				`MOVIE_${alldetails.original_title || alldetails.original_name}`,
+				JSON.stringify(movie)
+			);
+		} else {
+			localStorage.removeItem(
+				`MOVIE_${alldetails.original_title || alldetails.original_name}`
+			);
+		}
+		setTimeout(() => {
+			GET_MOVIES_FROM_LOCALSTORAGE();
+		}, 500);
+	};
 
-    const Add_to_LIST = () => {
-        let movie = {
-            id: alldetails.id,
-            name: alldetails.original_title || alldetails.original_name,
-            poster_path: alldetails.poster_path
-        }
-        localStorage.setItem(`MOVIE_${alldetails.original_title || alldetails.original_name}`, JSON.stringify(movie));
-    }
-    
-    return (
-        <div className="main-movie-cont">
-            <div className="left-main-movie-poster">
-                <img className="main-poster" src="https://image.tmdb.org/t/p/original/riYInlsq2kf1AWoGm80JQW5dLKp.jpg" />
-            </div>
+	const GET_MOVIES_FROM_LOCALSTORAGE = () => {
+		let favlist_fromLS = Object.entries(localStorage)
+			.map((item) => item[1])
+			.map((item) => JSON.parse(item));
+		console.log(favlist_fromLS);
+		setFavList(favlist_fromLS);
+	};
 
-            <div className="right-main-movie-details">
-                <div className="main-movie-title">
-                    {alldetails.original_title || alldetails.original_name }
-                </div>
-                <div className="main-movie-des">
-                    {alldetails.overview.length < 300 ? alldetails.overview :
-                        <p className="main-movie-des-para">
-                            <span className="less-des">
-                                {alldetails.overview.slice(0, 200)}
-                            </span>
-                            <span className="dots">
-                                ...
-                            </span>
-                            <span className="more-des">
-                                {alldetails.overview.slice(200, alldetails.overview.length)}
-                            </span>
-                            <span onClick={() => { ReadMore() }} className="read-more">
-                                Read More
-                            </span>
-                        </p>}
-                </div>
-                <div className="main-movie-details">
-                  <FaStar className="fa-star" />  {alldetails.vote_average} / 10
-                </div>
-                <div className="add-to-list">
-                    <input onChange={() =>
-                    {
-                        setFav(!Fav);
-                        Add_to_LIST();
-                    }}
-                        type="checkbox"
-                        id="add-to-list-input"
-                        checked={Fav} />
-                    <label htmlFor="add-to-list-input" id="add-to-list-icon">❤</label>
-                    <span className="add-to-list-title">Add to My List</span>
-                </div>
-            </div>
-        </div>
-    )
+	const CHECK_IF_MAIN_MOVIE_IS_IN_LSTORAGE = () => {
+		const Is_Current_Main_Fav = FavList.map((item) => item.id == alldetails.id).filter(
+			Boolean
+		);
+		console.log(
+			'Main Move fav? =',
+			Is_Current_Main_Fav[0]
+		); /*  <- Returns true if it Main is there  */
+		if (Is_Current_Main_Fav[0]) {
+			setFav(true);
+		} else {
+			setFav(false);
+		}
+		console.log('FavList', FavList);
+	};
+
+	return (
+		<div className='main-movie-cont'>
+			<div className='left-main-movie-poster'>
+				<img
+					className='main-poster'
+					src='https://image.tmdb.org/t/p/original/riYInlsq2kf1AWoGm80JQW5dLKp.jpg'
+				/>
+			</div>
+
+			<div className='right-main-movie-details'>
+				<div className='main-movie-title'>
+					{alldetails.original_title || alldetails.original_name}
+				</div>
+				<div className='main-movie-des'>
+					{alldetails.overview.length < 300 ? (
+						alldetails.overview
+					) : (
+						<p className='main-movie-des-para'>
+							<span className='less-des'>{alldetails.overview.slice(0, 200)}</span>
+							<span className='dots'>...</span>
+							<span className='more-des'>
+								{alldetails.overview.slice(200, alldetails.overview.length)}
+							</span>
+							<span
+								onClick={() => {
+									ReadMore();
+								}}
+								className='read-more'>
+								Read More
+							</span>
+						</p>
+					)}
+				</div>
+				<div className='main-movie-details'>
+					<FaStar className='fa-star' /> {alldetails.vote_average} / 10
+				</div>
+				<div className='add-to-list'>
+					<input
+						onChange={() => {
+							setFav(!Fav);
+							Add_OR_REM_to_LIST();
+						}}
+						type='checkbox'
+						id='add-to-list-input'
+						checked={Fav}
+					/>
+					<label htmlFor='add-to-list-input' id='add-to-list-icon'>
+						❤
+					</label>
+					<span className='add-to-list-title'>Add to My List</span>
+				</div>
+			</div>
+		</div>
+	);
 }
 
-export default MainMovie
+export default MainMovie;
