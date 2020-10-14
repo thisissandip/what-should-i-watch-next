@@ -2,8 +2,9 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {FaStar} from 'react-icons/fa';
 import './MainMovie.css';
+import MovieList from './MovieList';
 
-function MainMovie({alldetails}) {
+function MainMovie({alldetails, ShowFavList, setShowFavList, setMainMovie}) {
 	/* SET THE INTIAL FAV LIST FROM LOCAL STORAGE */
 	let favlist_fromLS = Object.entries(localStorage)
 		.map((item) => item[1])
@@ -52,16 +53,10 @@ function MainMovie({alldetails}) {
 	};
 
 	const Add_OR_REM_to_LIST = () => {
-		let movie = {
-			id: alldetails.id,
-			name: alldetails.original_title || alldetails.original_name,
-			poster_path: alldetails.poster_path,
-			vote: alldetails.vote_average,
-		};
 		if (!Fav) {
 			localStorage.setItem(
 				`MOVIE_${alldetails.original_title || alldetails.original_name}`,
-				JSON.stringify(movie)
+				JSON.stringify(alldetails)
 			);
 		} else {
 			localStorage.removeItem(
@@ -98,58 +93,68 @@ function MainMovie({alldetails}) {
 	};
 
 	return (
-		<div className='main-movie-cont'>
-			<div className='left-main-movie-poster'>
-				<img
-					className='main-poster'
-					src='https://image.tmdb.org/t/p/original/or06FN3Dka5tukK1e9sl16pB3iy.jpg'
-				/>
-			</div>
-
-			<div className='right-main-movie-details'>
-				<div className='main-movie-title'>
-					{alldetails.original_title || alldetails.original_name}
-				</div>
-				<div className='main-movie-des'>
-					{alldetails.overview.length < 300 ? (
-						alldetails.overview
-					) : (
-						<p className='main-movie-des-para'>
-							<span className='less-des'>{alldetails.overview.slice(0, 200)}</span>
-							<span className='dots'>...</span>
-							<span className='more-des'>
-								{alldetails.overview.slice(200, alldetails.overview.length)}
-							</span>
-							<span
-								onClick={() => {
-									ReadMore();
-								}}
-								className='read-more'>
-								Read More
-							</span>
-						</p>
-					)}
-				</div>
-				<div className='main-movie-details'>
-					<FaStar className='fa-star' /> {alldetails.vote_average} / 10
-				</div>
-				<div className='add-to-list'>
-					<input
-						onChange={() => {
-							setFav(!Fav);
-							Add_OR_REM_to_LIST();
-						}}
-						type='checkbox'
-						id='add-to-list-input'
-						checked={Fav}
+		<>
+			<div className='main-movie-cont'>
+				<div className='left-main-movie-poster'>
+					<img
+						className='main-poster'
+						src='https://image.tmdb.org/t/p/original/or06FN3Dka5tukK1e9sl16pB3iy.jpg'
 					/>
-					<label htmlFor='add-to-list-input' id='add-to-list-icon'>
-						❤
-					</label>
-					<span className='add-to-list-title'>Add to My List</span>
+				</div>
+
+				<div className='right-main-movie-details'>
+					<div className='main-movie-title'>
+						{alldetails.original_title || alldetails.original_name}
+					</div>
+					<div className='main-movie-des'>
+						{alldetails.overview.length < 300 ? (
+							alldetails.overview
+						) : (
+							<p className='main-movie-des-para'>
+								<span className='less-des'>{alldetails.overview.slice(0, 200)}</span>
+								<span className='dots'>...</span>
+								<span className='more-des'>
+									{alldetails.overview.slice(200, alldetails.overview.length)}
+								</span>
+								<span
+									onClick={() => {
+										ReadMore();
+									}}
+									className='read-more'>
+									Read More
+								</span>
+							</p>
+						)}
+					</div>
+					<div className='main-movie-details'>
+						<FaStar className='fa-star' /> {alldetails.vote_average} / 10
+					</div>
+					<div className='add-to-list'>
+						<input
+							onChange={() => {
+								setFav(!Fav);
+								Add_OR_REM_to_LIST();
+							}}
+							type='checkbox'
+							id='add-to-list-input'
+							checked={Fav}
+						/>
+						<label htmlFor='add-to-list-input' id='add-to-list-icon'>
+							❤
+						</label>
+						<span className='add-to-list-title'>Add to My List</span>
+					</div>
 				</div>
 			</div>
-		</div>
+			{ShowFavList && (
+				<MovieList
+					setMainMovie={setMainMovie}
+					setFavList={setFavList}
+					FavList={FavList}
+					setShowFavList={setShowFavList}
+				/>
+			)}
+		</>
 	);
 }
 

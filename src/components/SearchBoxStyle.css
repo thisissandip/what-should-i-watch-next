@@ -156,7 +156,7 @@
 	width: 10vw;
 	height: 15vw;
 	object-fit: contain;
-	transition: 0.2s all ease-in-out, 0.4s transform cubic-bezier(0.5, 0.25, 0, 1);
+	transition: 0.2s all ease-in-out, 0.3s transform cubic-bezier(0.5, 0.25, 0, 1);
 }
 
 .suggested-movie:hover {

@@ -97,7 +97,7 @@ function SearchBox() {
 					</div>
 					<div className='suggestion-cont'>{showSuggestions && displaysugesstions}</div>
 				</div>
-				<div className='my-watchlist-cont'>
+				<div onClick={() => setShowFavList(true)} className='my-watchlist-cont'>
 					<BiCameraMovie className='watch-list-icon' />
 					<span className='watchlist-text'>MovieList</span>
 				</div>
@@ -106,6 +106,8 @@ function SearchBox() {
 			{showMovies && (
 				<>
 					<DisplayMovies
+						ShowFavList={ShowFavList}
+						setShowFavList={setShowFavList}
 						alldetails={MainMovie}
 						setshowSuggetions={setshowSuggetions}
 						setMainMovie={setMainMovie}

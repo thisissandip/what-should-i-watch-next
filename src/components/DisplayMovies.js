@@ -4,7 +4,15 @@ import {useState} from 'react';
 import MainMovie from './MainMovie';
 import SuggestedMovie from './SuggestedMovie';
 
-function DisplayMovie({alldetails, type, movie, setMainMovie, setshowSuggetions}) {
+function DisplayMovie({
+	alldetails,
+	type,
+	movie,
+	setMainMovie,
+	setshowSuggetions,
+	ShowFavList,
+	setShowFavList,
+}) {
 	const backdrop = alldetails.backdrop_path;
 	const id = alldetails.id;
 	const lang = alldetails.original_language;
@@ -82,7 +90,12 @@ function DisplayMovie({alldetails, type, movie, setMainMovie, setshowSuggetions}
 
 	return (
 		<>
-			<MainMovie alldetails={alldetails} />
+			<MainMovie
+				setMainMovie={setMainMovie}
+				ShowFavList={ShowFavList}
+				setShowFavList={setShowFavList}
+				alldetails={alldetails}
+			/>
 			<div className='suggested-title'>Similar</div>
 			<div className='suggestion-img-cont-wrapper'>
 				<div className='all-display-movie-cont'>{suggested}</div>
