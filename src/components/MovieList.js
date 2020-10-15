@@ -1,24 +1,26 @@
 import React, {useState, useEffect} from 'react';
 import {MdClose} from 'react-icons/md';
 
-function MovieList({setShowFavList, setFavList, FavList, setMainMovie}) {
+function MovieList({setShowFavList, setFavList, FavList, alldetails, setMainMovie}) {
 	useEffect(() => {
 		const mylistcont = document.querySelector('.my-movie-list-cont');
 		mylistcont.style.right = '0';
 	}, []);
 
-	/* 	const CLEAR_LOCAL_STORAGE = () => {
+	const CLEAR_LOCAL_STORAGE = () => {
 		setFavList([]);
 		localStorage.clear();
-	}; */
+	};
 
 	const allmovies = FavList.map((item) => (
 		<div
 			onClick={() => {
-				animate_sug_div();
-				setTimeout(() => {
-					setMainMovie(item);
-				}, 1000);
+				if (alldetails.id !== item.id) {
+					animate_sug_div();
+					setTimeout(() => {
+						setMainMovie(item);
+					}, 1000);
+				}
 				REM_my_list_cont();
 			}}
 			key={item.id}
@@ -58,9 +60,11 @@ function MovieList({setShowFavList, setFavList, FavList, setMainMovie}) {
 				/>
 				<div className='my-list-title'>My Movie List</div>
 				<div className='my-list-all-movies'>{allmovies}</div>
-				{/* 				<button  onClick={CLEAR_LOCAL_STORAGE}  className='clear-list'>
-					Remove All Movies
-				</button> */}
+				<div className='my-list-btn-cont'>
+					<button onClick={CLEAR_LOCAL_STORAGE} className='clear-list'>
+						Remove All Movies
+					</button>
+				</div>
 			</div>
 		</>
 	);

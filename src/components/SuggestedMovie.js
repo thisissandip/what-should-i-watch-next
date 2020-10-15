@@ -1,7 +1,7 @@
 import React from 'react';
 import {useEffect} from 'react';
 
-function SuggestedMovie({poster, item, setMainMovie, setshowSuggetions}) {
+function SuggestedMovie({poster, item, alldetails, setMainMovie, setshowSuggetions}) {
 	const add_to_dom = () => {
 		const all_sug_movie = document.querySelector('.all-display-movie-cont');
 		all_sug_movie.style.bottom = '0rem';

@@ -82,6 +82,7 @@ function DisplayMovie({
 		<SuggestedMovie
 			key={item.id}
 			poster={item.poster_path}
+			alldetails={alldetails}
 			setMainMovie={setMainMovie}
 			setshowSuggetions={setshowSuggetions}
 			item={item}

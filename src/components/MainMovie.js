@@ -36,10 +36,15 @@ function MainMovie({alldetails, ShowFavList, setShowFavList, setMainMovie}) {
 		setTimeout(() => {
 			add_to_dom();
 		}, 1000);
+		console.log(alldetails);
 		return () => {
 			rem_frm_dom();
 		};
 	}, [alldetails.id]);
+
+	useEffect(() => {
+		CHECK_IF_MAIN_MOVIE_IS_IN_LSTORAGE();
+	}, [FavList]);
 
 	const ReadMore = () => {
 		const right_details = document.querySelector('.right-main-movie-details');
@@ -152,6 +157,7 @@ function MainMovie({alldetails, ShowFavList, setShowFavList, setMainMovie}) {
 					setFavList={setFavList}
 					FavList={FavList}
 					setShowFavList={setShowFavList}
+					alldetails={alldetails}
 				/>
 			)}
 		</>
