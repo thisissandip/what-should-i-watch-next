@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {MdClose} from 'react-icons/md';
 
 function MovieList({setShowFavList, setFavList, FavList, alldetails, setMainMovie}) {

@@ -40,11 +40,11 @@ function MainMovie({alldetails, ShowFavList, setShowFavList, setMainMovie}) {
 		return () => {
 			rem_frm_dom();
 		};
-	}, [alldetails.id]);
+	}, [alldetails.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	useEffect(() => {
 		CHECK_IF_MAIN_MOVIE_IS_IN_LSTORAGE();
-	}, [FavList]);
+	}, [FavList]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const ReadMore = () => {
 		const right_details = document.querySelector('.right-main-movie-details');
@@ -82,7 +82,7 @@ function MainMovie({alldetails, ShowFavList, setShowFavList, setMainMovie}) {
 	};
 
 	const CHECK_IF_MAIN_MOVIE_IS_IN_LSTORAGE = () => {
-		const Is_Current_Main_Fav = FavList.map((item) => item.id == alldetails.id).filter(
+		const Is_Current_Main_Fav = FavList.map((item) => item.id === alldetails.id).filter(
 			Boolean
 		);
 		console.log(
@@ -102,6 +102,7 @@ function MainMovie({alldetails, ShowFavList, setShowFavList, setMainMovie}) {
 			<div className='main-movie-cont'>
 				<div className='left-main-movie-poster'>
 					<img
+						alt={alldetails.original_title || alldetails.original_name}
 						className='main-poster'
 						src='https://image.tmdb.org/t/p/original/or06FN3Dka5tukK1e9sl16pB3iy.jpg'
 					/>

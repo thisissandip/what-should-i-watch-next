@@ -71,12 +71,7 @@ function DisplayMovie({
 			fetchMovies();
 		}, 500);
 		changebg();
-	}, [id]);
-
-	/*	CONSOLE LOG SUGGESTED MOVIES
- 	useEffect(() => {
-		console.log(moviesarray);
-	}, [moviesarray]) */
+	}, [id]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const suggested = moviesarray.map((item) => (
 		<SuggestedMovie
@@ -100,6 +95,13 @@ function DisplayMovie({
 			<div className='suggested-title'>Similar</div>
 			<div className='suggestion-img-cont-wrapper'>
 				<div className='all-display-movie-cont'>{suggested}</div>
+			</div>
+			<div className='footer'>
+				Made with &#x1F496; by{' '}
+				<a href='https://github.com/thisissandip' target='_blank'>
+					{' '}
+					Sandip Mondal
+				</a>{' '}
 			</div>
 		</>
 	);

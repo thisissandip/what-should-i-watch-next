@@ -54,13 +54,14 @@ function SearchBox() {
 		};
 
 		SET_DISPLAY_REM_SUGGESTION(defaultitem);
-	}, []);
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const SET_DISPLAY_REM_SUGGESTION = (item) => {
-		if (showMovies) {
+		if (showMovies && MainMovie.id !== item.id) {
 			const all_sug_movie = document.querySelector('.all-display-movie-cont');
 			all_sug_movie.style.bottom = '-40rem';
 		}
+
 		setMainMovie(item);
 		setshowSuggetions(false);
 		setUserInput('');
@@ -83,7 +84,11 @@ function SearchBox() {
 	return (
 		<>
 			<div className='nav-bar'>
-				<img className='logo' src={require('../imgs/LOGO1.png')} />
+				<img
+					className='logo'
+					alt='What Should I Next? (Logo)'
+					src={require('../imgs/LOGO1.png')}
+				/>
 				<div className='searchbox-cont'>
 					<div className='input-cont'>
 						<FaSearch className='search-icon' />

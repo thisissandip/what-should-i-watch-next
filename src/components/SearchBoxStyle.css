@@ -11,7 +11,6 @@
 }
 
 .logo {
-	cursor: pointer;
 	width: 150px;
 	font-family: var(--myfont);
 	font-size: 2rem;
@@ -60,7 +59,6 @@
 	display: flex;
 	justify-content: center;
 	transition: 1s all ease-in-out;
-	/* 	border-bottom: 1px solid grey; */
 }
 
 .search-icon {
@@ -126,8 +124,8 @@
 	flex-wrap: wrap;
 	padding: 18px 0;
 	transition: 1s height ease-in-out;
-	margin-top: -10px;
-	margin-bottom: 20px;
+	margin-top: -5px;
+	margin-bottom: 4px;
 }
 
 .all-display-movie-cont {
@@ -139,13 +137,14 @@
 	display: flex;
 	justify-content: space-evenly;
 	transition: 1.5s all cubic-bezier(0.5, 0.25, 0, 1);
+	margin-bottom: 10px;
 }
 
 .suggested-title {
 	color: white;
 	font-family: var(--myfont);
 	font-weight: 500;
-	font-size: 1.2rem;
+	font-size: 1.1rem;
 	margin-top: 10px;
 	width: 91%;
 }
@@ -160,6 +159,6 @@
 }
 
 .suggested-movie:hover {
-	transform: scale(1.1);
+	transform: scale(1.08);
 	box-shadow: 0 0 12px rgb(224, 8, 224, 0.5);
 }

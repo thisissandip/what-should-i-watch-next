@@ -6,7 +6,6 @@
 
 body {
 	background-color: #00020f;
-	overflow: hidden;
 }
 
 #root {
@@ -44,11 +43,13 @@ body {
 }
 
 .all-elements {
+	position: relative;
 	width: 100%;
 	height: 100vh;
+	overflow: hidden;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
 	transition: 1s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -58,7 +59,7 @@ body {
 	flex-direction: column;
 	align-self: center;
 	position: absolute;
-	z-index: 4000;
+	z-index: 8000;
 	right: -100rem;
 	top: 0;
 	height: 100vh;
@@ -149,12 +150,29 @@ body {
 	color: #00020f;
 }
 
+.footer {
+	color: white;
+	position: relative;
+	bottom: 0;
+	z-index: 5000;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	background-color: #00020f;
+	font-size: 1rem;
+	margin-top: 4px;
+	font-family: var(--myfont);
+	padding-bottom: 7px;
+	padding-top: 1px;
+}
+
+.footer > a {
+	padding: 0 7px;
+	color: goldenrod;
+	margin-top: -1px;
+}
+
 /* 
-to do:
-1. Remove each movie from LS
-
 issues: 
-1. same search problem / same movie click -> same id hai toh movie poster rehta hai but baaki sab animate hota hai
-2. after clciking one fav movie - phir sug movie par click hua toh baaki sab animate hota hai - this is happening cause of frequent api requests
-
+constant (2-3 clicks in 4 seconds) super fast clicking on different movies results in expensive api calls so api rejects the rqeuests
 */
