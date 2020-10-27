@@ -14,7 +14,7 @@ function MainMovie({alldetails, ShowFavList, setShowFavList, setMainMovie}) {
 	const [Fav, setFav] = useState(false);
 	const [FavList, setFavList] = useState(favlist_fromLS);
 
-	const [width, height] = useWidthHeight();
+	const [width] = useWidthHeight();
 
 	useEffect(() => {
 		const mainposter = document.querySelector('.main-poster');
@@ -22,6 +22,15 @@ function MainMovie({alldetails, ShowFavList, setShowFavList, setMainMovie}) {
 		const mainmoviedeets = document.querySelector('.right-main-movie-details ');
 		mainmoviedeets.style.opacity = '1';
 	}, []);
+
+	useEffect(() => {
+		const mainmoviedeets = document.querySelector('.right-main-movie-details ');
+		if (width < 900) {
+			mainmoviedeets.style.width = '100%';
+		} else {
+			mainmoviedeets.style.width = '40%';
+		}
+	}, [width]);
 
 	const rem_frm_dom = () => {
 		const mainposter = document.querySelector('.main-poster');
