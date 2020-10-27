@@ -113,7 +113,7 @@
 }
 
 .suggestion-img-cont-wrapper {
-	height: 35%;
+	/* 	height: 35%; */
 	position: relative;
 	width: 100%;
 	display: flex;
@@ -124,6 +124,7 @@
 	transition: 1s height ease-in-out;
 	margin-top: -5px;
 	margin-bottom: 4px;
+	overflow: hidden;
 }
 
 @media screen and (max-width: 900px) {
@@ -208,18 +209,6 @@
 .suggested-movie:hover {
 	transform: scale(1.08);
 	box-shadow: 0 0 12px rgb(224, 8, 224, 0.5);
-}
-
-@media screen and (max-width: 1200px) {
-	.suggestion-img-cont-wrapper {
-		height: 35%;
-		position: relative;
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-wrap: wrap;
-	}
 }
 
 @media screen and (max-width: 900px) {

@@ -115,32 +115,49 @@
 
 /* media quesreies */
 
-@media screen and (width: 1280px) and (height: 800px) {
+@media screen and (max-width: 1400px) {
 	.left-main-movie-poster {
-		width: 280px;
-		margin-left: -10px;
+		width: 200px;
 	}
+	.suggested-movie {
+		margin: 10px 5px;
+		width: 135px;
+		/* 	height: 15.5vw; */
+	}
+}
+
+@media screen and (width: 1280px) and (height: 800px) {
+	.all-elements {
+		height: 100vh;
+		overflow: hidden;
+	}
+
+	.left-main-movie-poster {
+		width: 250px;
+	}
+
 	.suggestion-img-cont-wrapper {
 		height: 28%;
 	}
 
-	.main-poster {
-		height: 350px;
+	.suggested-movie {
+		width: 10.2vw;
+		height: 15.5vw;
 	}
 }
 
 @media screen and (width: 1440px) and (height: 900px) {
+	.all-elements {
+		height: 100vh;
+		overflow: hidden;
+	}
+
 	.left-main-movie-poster {
-		width: 350px;
-		margin-left: -25px;
+		width: 250px;
 	}
 
 	.suggestion-img-cont-wrapper {
 		height: 28%;
-	}
-
-	.main-poster {
-		height: 420px;
 	}
 
 	.suggested-movie {
@@ -150,6 +167,9 @@
 }
 
 @media screen and (width: 2560px) and (height: 1080px) {
+	.all-elements {
+		height: 100vh;
+	}
 	.left-main-movie-poster {
 		width: 350px;
 		margin-left: -10px;
@@ -166,12 +186,6 @@
 	.suggested-movie {
 		width: 10vw;
 		height: 15.5vw;
-	}
-}
-
-@media screen and (max-width: 1200px) {
-	.left-main-movie-poster {
-		width: 200px;
 	}
 }
 

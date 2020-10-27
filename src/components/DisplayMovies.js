@@ -3,7 +3,6 @@ import endpoints from '../apifetches';
 import {useState} from 'react';
 import MainMovie from './MainMovie';
 import SuggestedMovie from './SuggestedMovie';
-import useWidthHeight from './useWidth';
 
 function DisplayMovie({
 	alldetails,
@@ -20,8 +19,6 @@ function DisplayMovie({
 
 	const [moviesarray, setmoviesarray] = useState([]);
 	const [togglebg1, settogglebg1] = useState(true);
-
-	const [width, height] = useWidthHeight();
 
 	const changebg = () => {
 		if (togglebg1) {
