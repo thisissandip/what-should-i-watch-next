@@ -1,7 +1,15 @@
 import React from 'react';
 import {useEffect} from 'react';
+import useWidthHeight from './useWidth';
 
 function SuggestedMovie({poster, item, alldetails, setMainMovie, setshowSuggetions}) {
+	const [width] = useWidthHeight();
+
+	const bringtotop = () => {
+		document.body.scrollTop = '0';
+		document.documentElement.scrollTop = '0';
+	};
+
 	const add_to_dom = () => {
 		const all_sug_movie = document.querySelector('.all-display-movie-cont');
 		all_sug_movie.style.bottom = '0rem';
@@ -43,11 +51,17 @@ function SuggestedMovie({poster, item, alldetails, setMainMovie, setshowSuggetio
 				className='suggested-movie'
 				alt={item.original_title || item.original_name}
 				onClick={() => {
-					animate_sug_div();
-					setTimeout(() => {
-						remove_more_details();
+					if (width > 900) {
+						animate_sug_div();
+						setTimeout(() => {
+							remove_more_details();
+							setMainMovie(item);
+						}, 800);
+					} else {
+						bringtotop();
 						setMainMovie(item);
-					}, 800);
+					}
+
 					setshowSuggetions(false);
 				}}
 				src={`https://image.tmdb.org/t/p/original${poster}`}></img>

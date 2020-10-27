@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import {FaStar} from 'react-icons/fa';
 import './MainMovie.css';
 import MovieList from './MovieList';
+import useWidthHeight from './useWidth';
 
 function MainMovie({alldetails, ShowFavList, setShowFavList, setMainMovie}) {
 	/* SET THE INTIAL FAV LIST FROM LOCAL STORAGE */
@@ -12,6 +13,8 @@ function MainMovie({alldetails, ShowFavList, setShowFavList, setMainMovie}) {
 
 	const [Fav, setFav] = useState(false);
 	const [FavList, setFavList] = useState(favlist_fromLS);
+
+	const [width, height] = useWidthHeight();
 
 	useEffect(() => {
 		const mainposter = document.querySelector('.main-poster');
@@ -112,26 +115,33 @@ function MainMovie({alldetails, ShowFavList, setShowFavList, setMainMovie}) {
 					<div className='main-movie-title'>
 						{alldetails.original_title || alldetails.original_name}
 					</div>
-					<div className='main-movie-des'>
-						{alldetails.overview.length < 300 ? (
-							alldetails.overview
-						) : (
-							<p className='main-movie-des-para'>
-								<span className='less-des'>{alldetails.overview.slice(0, 200)}</span>
-								<span className='dots'>...</span>
-								<span className='more-des'>
-									{alldetails.overview.slice(200, alldetails.overview.length)}
-								</span>
-								<span
-									onClick={() => {
-										ReadMore();
-									}}
-									className='read-more'>
-									Read More
-								</span>
-							</p>
-						)}
-					</div>
+					{width < 900 ? (
+						<div className='main-movie-des'>
+							<p className='main-movie-des-para'>{alldetails.overview}</p>
+						</div>
+					) : (
+						<div className='main-movie-des'>
+							{alldetails.overview.length < 300 ? (
+								alldetails.overview
+							) : (
+								<p className='main-movie-des-para'>
+									<span className='less-des'>{alldetails.overview.slice(0, 200)}</span>
+									<span className='dots'>...</span>
+									<span className='more-des'>
+										{alldetails.overview.slice(200, alldetails.overview.length)}
+									</span>
+									<span
+										onClick={() => {
+											ReadMore();
+										}}
+										className='read-more'>
+										Read More
+									</span>
+								</p>
+							)}
+						</div>
+					)}
+
 					<div className='main-movie-details'>
 						<FaStar className='fa-star' /> {alldetails.vote_average} / 10
 					</div>

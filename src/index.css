@@ -2,6 +2,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 
 body {
@@ -45,8 +46,8 @@ body {
 .all-elements {
 	position: relative;
 	width: 100%;
+	/* 	overflow: hidden; */
 	height: 100vh;
-	overflow: hidden;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -176,3 +177,14 @@ body {
 issues: 
 constant (2-3 clicks in 4 seconds) super fast clicking on different movies results in expensive api calls so api rejects the rqeuests
 */
+
+@media screen and (max-width: 900px) {
+	.all-elements {
+		height: auto;
+		justify-content: flex-start;
+	}
+
+	.my-movie-list-cont {
+		width: 100%;
+	}
+}
