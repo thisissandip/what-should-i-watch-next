@@ -9,6 +9,7 @@
 
 .left-main-movie-poster {
 	width: 13vw;
+	min-width: 260px;
 	margin-left: 10px;
 	outline: none;
 	transition: 1s all ease-in-out;
@@ -18,7 +19,8 @@
 	width: 100%;
 	object-fit: contain;
 	opacity: 0;
-	transition: 1s height cubic-bezier(0.165, 0.84, 0.44, 1), 1s opacity ease-in-out;
+	transition: 1s height cubic-bezier(0.165, 0.84, 0.44, 1),
+		1s opacity ease-in-out;
 }
 
 .right-main-movie-details {
@@ -113,39 +115,6 @@
 	color: gold;
 }
 
-/* media quesreies */
-
-@media screen and (max-width: 1400px) {
-	.left-main-movie-poster {
-		width: 200px;
-	}
-	.suggested-movie {
-		margin: 10px 5px;
-		width: 135px;
-		/* 	height: 15.5vw; */
-	}
-}
-
-@media screen and (width: 1280px) and (height: 800px) {
-	.all-elements {
-		height: 100vh;
-		overflow: hidden;
-	}
-
-	.left-main-movie-poster {
-		width: 250px;
-	}
-
-	.suggestion-img-cont-wrapper {
-		height: 28%;
-	}
-
-	.suggested-movie {
-		width: 10.2vw;
-		height: 15.5vw;
-	}
-}
-
 @media screen and (width: 1440px) and (height: 900px) {
 	.all-elements {
 		height: 100vh;
@@ -189,9 +158,9 @@
 	}
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
 	.left-main-movie-poster {
-		width: 180px;
+		min-width: 200px;
 		margin-left: 0px;
 		margin-bottom: 10px;
 		margin-top: 2px;
@@ -211,12 +180,29 @@
 	}
 	.main-movie-des {
 		font-weight: 300;
+		width: 100%;
 		text-align: justify;
 		font-size: 1rem;
 		margin-bottom: 15px;
 	}
 
 	.add-to-list {
+		margin-bottom: 10px;
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	.main-movie-title {
+		font-size: 2rem;
+		margin-bottom: 5px;
+	}
+	.main-movie-des {
+		font-weight: 300;
+		font-size: 0.9rem;
+		margin-bottom: 15px;
+	}
+
+	.main-movie-details {
 		margin-bottom: 10px;
 	}
 }

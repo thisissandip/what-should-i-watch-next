@@ -1,11 +1,11 @@
-import React from 'react';
-import {useState, useEffect} from 'react';
-import {FaStar} from 'react-icons/fa';
-import './MainMovie.css';
-import MovieList from './MovieList';
-import useWidthHeight from './useWidth';
+import React from "react";
+import { useState, useEffect } from "react";
+import { FaStar } from "react-icons/fa";
+import "./MainMovie.css";
+import MovieList from "./MovieList";
+import useWidthHeight from "./useWidth";
 
-function MainMovie({alldetails, ShowFavList, setShowFavList, setMainMovie}) {
+function MainMovie({ alldetails, ShowFavList, setShowFavList, setMainMovie }) {
 	/* SET THE INTIAL FAV LIST FROM LOCAL STORAGE */
 	let favlist_fromLS = Object.entries(localStorage)
 		.map((item) => item[1])
@@ -17,30 +17,30 @@ function MainMovie({alldetails, ShowFavList, setShowFavList, setMainMovie}) {
 	const [width] = useWidthHeight();
 
 	useEffect(() => {
-		const mainposter = document.querySelector('.main-poster');
-		mainposter.style.opacity = '1';
-		const mainmoviedeets = document.querySelector('.right-main-movie-details ');
-		mainmoviedeets.style.opacity = '1';
+		const mainposter = document.querySelector(".main-poster");
+		mainposter.style.opacity = "1";
+		const mainmoviedeets = document.querySelector(".right-main-movie-details ");
+		mainmoviedeets.style.opacity = "1";
 	}, []);
 
 	useEffect(() => {
-		const mainmoviedeets = document.querySelector('.right-main-movie-details ');
-		if (width < 900) {
-			mainmoviedeets.style.width = '100%';
+		const mainmoviedeets = document.querySelector(".right-main-movie-details ");
+		if (width < 1000) {
+			mainmoviedeets.style.width = "100%";
 		} else {
-			mainmoviedeets.style.width = '70%';
+			mainmoviedeets.style.width = "70%";
 		}
 	}, [width]);
 
 	const rem_frm_dom = () => {
-		const mainposter = document.querySelector('.main-poster');
-		mainposter.style.opacity = '0';
+		const mainposter = document.querySelector(".main-poster");
+		mainposter.style.opacity = "0";
 	};
 
 	const add_to_dom = () => {
-		const mainposter = document.querySelector('.main-poster');
+		const mainposter = document.querySelector(".main-poster");
 		mainposter.src = `https://image.tmdb.org/t/p/original${alldetails.poster_path}`;
-		mainposter.style.opacity = '1';
+		mainposter.style.opacity = "1";
 	};
 
 	useEffect(() => {
@@ -83,11 +83,11 @@ function MainMovie({alldetails, ShowFavList, setShowFavList, setMainMovie}) {
 	};
 
 	const CHECK_IF_MAIN_MOVIE_IS_IN_LSTORAGE = () => {
-		const Is_Current_Main_Fav = FavList.map((item) => item.id === alldetails.id).filter(
-			Boolean
-		);
+		const Is_Current_Main_Fav = FavList.map(
+			(item) => item.id === alldetails.id
+		).filter(Boolean);
 		console.log(
-			'Main Move fav? =',
+			"Main Move fav? =",
 			Is_Current_Main_Fav[0]
 		); /*  <- Returns true if it Main is there  */
 		if (Is_Current_Main_Fav[0]) {
@@ -95,7 +95,7 @@ function MainMovie({alldetails, ShowFavList, setShowFavList, setMainMovie}) {
 		} else {
 			setFav(false);
 		}
-		console.log('FavList', FavList);
+		console.log("FavList", FavList);
 	};
 
 	return (
