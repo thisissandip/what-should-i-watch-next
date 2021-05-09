@@ -1,7 +1,14 @@
+import { doc } from 'prettier';
 import React from 'react';
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 
-function SuggestedMovie({poster, item, alldetails, setMainMovie, setshowSuggetions}) {
+function SuggestedMovie({
+	poster,
+	item,
+	alldetails,
+	setMainMovie,
+	setshowSuggetions,
+}) {
 	const add_to_dom = () => {
 		const all_sug_movie = document.querySelector('.all-display-movie-cont');
 		all_sug_movie.style.bottom = '0rem';
@@ -19,7 +26,7 @@ function SuggestedMovie({poster, item, alldetails, setMainMovie, setshowSuggetio
 
 	const animate_sug_div = () => {
 		const all_sug_movie = document.querySelector('.all-display-movie-cont');
-		all_sug_movie.style.bottom = '-40rem';
+		all_sug_movie.style.bottom = '-80rem';
 		/* fade out details of main movie */
 		const mainmoviedeets = document.querySelector('.right-main-movie-details ');
 		mainmoviedeets.style.opacity = '0';

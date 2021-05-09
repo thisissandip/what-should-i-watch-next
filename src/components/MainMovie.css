@@ -2,14 +2,16 @@
 	margin: 0 auto;
 	margin-top: 15px;
 	z-index: 10;
-	width: 93%;
+	width: 95%;
 	display: flex;
 	color: white;
+	margin-bottom: 10px;
 }
 
 .left-main-movie-poster {
-	width: 13vw;
+	width: 15vw;
 	min-width: 260px;
+	max-width: 550px;
 	margin-left: 10px;
 	outline: none;
 	transition: 1s all ease-in-out;
@@ -115,49 +117,6 @@
 	color: gold;
 }
 
-@media screen and (width: 1440px) and (height: 900px) {
-	.all-elements {
-		height: 100vh;
-		overflow: hidden;
-	}
-
-	.left-main-movie-poster {
-		width: 250px;
-	}
-
-	.suggestion-img-cont-wrapper {
-		height: 28%;
-	}
-
-	.suggested-movie {
-		width: 10.2vw;
-		height: 15.5vw;
-	}
-}
-
-@media screen and (width: 2560px) and (height: 1080px) {
-	.all-elements {
-		height: 100vh;
-	}
-	.left-main-movie-poster {
-		width: 350px;
-		margin-left: -10px;
-	}
-
-	.main-poster {
-		height: 420px;
-	}
-
-	.suggestion-img-cont-wrapper {
-		height: 40%;
-	}
-
-	.suggested-movie {
-		width: 10vw;
-		height: 15.5vw;
-	}
-}
-
 @media only screen and (max-width: 1000px) {
 	.left-main-movie-poster {
 		min-width: 200px;
@@ -192,6 +151,9 @@
 }
 
 @media only screen and (max-width: 550px) {
+	.main-movie-cont {
+		width: 92%;
+	}
 	.main-movie-title {
 		font-size: 2rem;
 		margin-bottom: 5px;
@@ -204,5 +166,11 @@
 
 	.main-movie-details {
 		margin-bottom: 10px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	.main-movie-cont {
+		width: 94%;
 	}
 }

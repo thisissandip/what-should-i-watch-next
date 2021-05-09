@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import endpoints from '../apifetches';
-import {useState} from 'react';
+import { useState } from 'react';
 import MainMovie from './MainMovie';
 import SuggestedMovie from './SuggestedMovie';
 
@@ -58,12 +58,12 @@ function DisplayMovie({
 				const poster_filtered = sameLangMovies.filter(
 					(item) => item.poster_path !== null && item.backdrop_path !== null
 				);
-				setmoviesarray(poster_filtered.slice(0, 8));
+				setmoviesarray(poster_filtered.slice(0, 6));
 			} else {
 				const poster_filtered = data.results.filter(
 					(item) => item.poster_path !== null && item.backdrop_path !== null
 				);
-				setmoviesarray(poster_filtered.slice(0, 8));
+				setmoviesarray(poster_filtered.slice(0, 6));
 			}
 		};
 
@@ -92,8 +92,8 @@ function DisplayMovie({
 				setShowFavList={setShowFavList}
 				alldetails={alldetails}
 			/>
-			<div className='suggested-title'>Similar</div>
-			<div className='suggestion-img-cont-wrapper'>
+			<div className='suggested-title'>Similar Movies</div>
+			<div className='all-display-movie-wrapper'>
 				<div className='all-display-movie-cont'>{suggested}</div>
 			</div>
 			<div className='footer'>
