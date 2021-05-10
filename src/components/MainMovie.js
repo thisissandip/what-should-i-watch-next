@@ -1,50 +1,48 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { FaStar } from "react-icons/fa";
-import "./MainMovie.css";
-import MovieList from "./MovieList";
-import useWidthHeight from "./useWidth";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { FaStar } from 'react-icons/fa';
+import './MainMovie.css';
+import MovieList from './MovieList';
+import useWidthHeight from './useWidth';
 
 function MainMovie({ alldetails, ShowFavList, setShowFavList, setMainMovie }) {
 	/* SET THE INTIAL FAV LIST FROM LOCAL STORAGE */
-	let favlist_fromLS = Object.entries(localStorage)
-		.map((item) => item[1])
-		.map((item) => JSON.parse(item));
 
 	const [Fav, setFav] = useState(false);
-	const [FavList, setFavList] = useState(favlist_fromLS);
+	const [FavList, setFavList] = useState([]);
 
 	const [width] = useWidthHeight();
 
 	useEffect(() => {
-		const mainposter = document.querySelector(".main-poster");
-		mainposter.style.opacity = "1";
-		const mainmoviedeets = document.querySelector(".right-main-movie-details ");
-		mainmoviedeets.style.opacity = "1";
+		// Set Opacity of Main Poster and its Detials to 1
+		const mainposter = document.querySelector('.main-poster');
+		mainposter.style.opacity = '1';
+		const mainmoviedeets = document.querySelector('.right-main-movie-details ');
+		mainmoviedeets.style.opacity = '1';
 	}, []);
 
 	useEffect(() => {
-		const mainmoviedeets = document.querySelector(".right-main-movie-details ");
+		const mainmoviedeets = document.querySelector('.right-main-movie-details ');
 		if (width < 1000) {
-			mainmoviedeets.style.width = "100%";
+			mainmoviedeets.style.width = '100%';
 		} else {
-			mainmoviedeets.style.width = "70%";
+			mainmoviedeets.style.width = '70%';
 		}
+		Get_My_List_FromLS();
 	}, [width]);
 
 	const rem_frm_dom = () => {
-		const mainposter = document.querySelector(".main-poster");
-		mainposter.style.opacity = "0";
+		const mainposter = document.querySelector('.main-poster');
+		mainposter.style.opacity = '0';
 	};
 
 	const add_to_dom = () => {
-		const mainposter = document.querySelector(".main-poster");
+		const mainposter = document.querySelector('.main-poster');
 		mainposter.src = `https://image.tmdb.org/t/p/original${alldetails.poster_path}`;
-		mainposter.style.opacity = "1";
+		mainposter.style.opacity = '1';
 	};
 
 	useEffect(() => {
-		CHECK_IF_MAIN_MOVIE_IS_IN_LSTORAGE();
 		setTimeout(() => {
 			add_to_dom();
 		}, 1000);
@@ -56,30 +54,27 @@ function MainMovie({ alldetails, ShowFavList, setShowFavList, setMainMovie }) {
 
 	useEffect(() => {
 		CHECK_IF_MAIN_MOVIE_IS_IN_LSTORAGE();
-	}, [FavList]); // eslint-disable-line react-hooks/exhaustive-deps
+		console.log(FavList);
+	}, [FavList]);
 
-	const Add_OR_REM_to_LIST = () => {
-		if (!Fav) {
-			localStorage.setItem(
-				`MOVIE_${alldetails.original_title || alldetails.original_name}`,
-				JSON.stringify(alldetails)
-			);
-		} else {
-			localStorage.removeItem(
-				`MOVIE_${alldetails.original_title || alldetails.original_name}`
-			);
-		}
-		setTimeout(() => {
-			GET_MOVIES_FROM_LOCALSTORAGE();
-		}, 500);
+	const AddToList = () => {
+		let newFavList = [...FavList, alldetails];
+		localStorage.setItem('WSIWN_my_list', JSON.stringify(newFavList));
+		Get_My_List_FromLS();
 	};
 
-	const GET_MOVIES_FROM_LOCALSTORAGE = () => {
-		let favlist_fromLS = Object.entries(localStorage)
-			.map((item) => item[1])
-			.map((item) => JSON.parse(item));
-		console.log(favlist_fromLS);
-		setFavList(favlist_fromLS);
+	const RemoveFromList = () => {
+		let mylist = JSON.parse(localStorage.getItem('WSIWN_my_list'));
+		let UpdatedList = mylist.filter((item) => item.id !== alldetails.id);
+		localStorage.setItem('WSIWN_my_list', JSON.stringify(UpdatedList));
+		Get_My_List_FromLS();
+	};
+
+	const Get_My_List_FromLS = () => {
+		let mylist = JSON.parse(localStorage.getItem('WSIWN_my_list'));
+		if (mylist) {
+			setFavList(mylist);
+		}
 	};
 
 	const CHECK_IF_MAIN_MOVIE_IS_IN_LSTORAGE = () => {
@@ -87,7 +82,7 @@ function MainMovie({ alldetails, ShowFavList, setShowFavList, setMainMovie }) {
 			(item) => item.id === alldetails.id
 		).filter(Boolean);
 		console.log(
-			"Main Move fav? =",
+			'Main Move fav? =',
 			Is_Current_Main_Fav[0]
 		); /*  <- Returns true if it Main is there  */
 		if (Is_Current_Main_Fav[0]) {
@@ -95,8 +90,17 @@ function MainMovie({ alldetails, ShowFavList, setShowFavList, setMainMovie }) {
 		} else {
 			setFav(false);
 		}
-		console.log("FavList", FavList);
 	};
+
+	useEffect(() => {
+		CHECK_IF_MAIN_MOVIE_IS_IN_LSTORAGE();
+		setTimeout(() => {
+			add_to_dom();
+		}, 1000);
+		return () => {
+			rem_frm_dom();
+		};
+	}, [alldetails.id]);
 
 	return (
 		<>
@@ -125,7 +129,11 @@ function MainMovie({ alldetails, ShowFavList, setShowFavList, setMainMovie }) {
 						<input
 							onChange={() => {
 								setFav(!Fav);
-								Add_OR_REM_to_LIST();
+								if (!Fav) {
+									AddToList();
+								} else {
+									RemoveFromList();
+								}
 							}}
 							type='checkbox'
 							id='add-to-list-input'
@@ -145,6 +153,7 @@ function MainMovie({ alldetails, ShowFavList, setShowFavList, setMainMovie }) {
 					FavList={FavList}
 					setShowFavList={setShowFavList}
 					alldetails={alldetails}
+					Get_My_List_FromLS={Get_My_List_FromLS}
 				/>
 			)}
 		</>

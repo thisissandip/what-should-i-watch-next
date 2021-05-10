@@ -1,17 +1,14 @@
-import { doc } from 'prettier';
 import React from 'react';
 import { useEffect } from 'react';
+import useWidthHeight from './useWidth';
 
-function SuggestedMovie({
-	poster,
-	item,
-	alldetails,
-	setMainMovie,
-	setshowSuggetions,
-}) {
+function SuggestedMovie({ poster, item, setMainMovie, setshowSuggetions }) {
+	const [width] = useWidthHeight();
+
 	const add_to_dom = () => {
 		const all_sug_movie = document.querySelector('.all-display-movie-cont');
 		all_sug_movie.style.bottom = '0rem';
+		all_sug_movie.style.opacity = 1;
 		/* fade In details of main movie */
 
 		const mainmoviedeets = document.querySelector('.right-main-movie-details ');
@@ -22,11 +19,18 @@ function SuggestedMovie({
 		setTimeout(() => {
 			add_to_dom();
 		}, 600);
+
+		return () => {
+			add_to_dom();
+		};
 	}, [item.id]);
 
 	const animate_sug_div = () => {
 		const all_sug_movie = document.querySelector('.all-display-movie-cont');
-		all_sug_movie.style.bottom = '-80rem';
+
+		all_sug_movie.style.bottom = '-40rem';
+		all_sug_movie.style.opacity = 0;
+
 		/* fade out details of main movie */
 		const mainmoviedeets = document.querySelector('.right-main-movie-details ');
 		mainmoviedeets.style.opacity = '0';

@@ -20,6 +20,7 @@
 .main-poster {
 	width: 100%;
 	object-fit: contain;
+	/* border-radius: 20px; */
 	opacity: 0;
 	transition: 1s height cubic-bezier(0.165, 0.84, 0.44, 1),
 		1s opacity ease-in-out;

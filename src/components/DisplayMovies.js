@@ -84,6 +84,10 @@ function DisplayMovie({
 		/>
 	));
 
+	useEffect(() => {
+		console.log(moviesarray);
+	}, [moviesarray]);
+
 	return (
 		<>
 			<MainMovie
@@ -94,7 +98,17 @@ function DisplayMovie({
 			/>
 			<div className='suggested-title'>Similar Movies</div>
 			<div className='all-display-movie-wrapper'>
-				<div className='all-display-movie-cont'>{suggested}</div>
+				<div className='all-display-movie-cont'>
+					{moviesarray.length > 0 ? (
+						suggested
+					) : (
+						<div className='no-movies'>
+							No Similar Movies Found. I am Sorry I let you down 😔 <br />
+							Please Try to Search for some other Movie / Series. I will try my
+							best ✨
+						</div>
+					)}
+				</div>
 			</div>
 			<div className='footer'>
 				Made with &#x1F496; by{' '}

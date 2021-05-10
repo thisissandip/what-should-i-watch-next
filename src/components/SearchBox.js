@@ -1,8 +1,8 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import endpoints from '../apifetches';
-import {FaSearch} from 'react-icons/fa';
-import {BiCameraMovie} from 'react-icons/bi';
+import { FaSearch } from 'react-icons/fa';
+import { BiCameraMovie } from 'react-icons/bi';
 import DisplayMovies from './DisplayMovies';
 
 function SearchBox() {
@@ -26,7 +26,8 @@ function SearchBox() {
 					.then((responsedata) => {
 						const moviearray = responsedata.results;
 						const filteredname = moviearray.filter(
-							(item) => item.original_name !== null && item.backdrop_path !== null
+							(item) =>
+								item.original_name !== null && item.backdrop_path !== null
 						);
 						const filteredmovies = filteredname.slice(0, 5);
 						setSuggetions(filteredmovies);
@@ -68,18 +69,22 @@ function SearchBox() {
 		setshowMovies(true);
 	};
 
-	const displaysugesstions = Suggestions.map((item) => (
-		<div
-			onClick={() => {
-				SET_DISPLAY_REM_SUGGESTION(item);
-				console.log(item);
-			}}
-			key={item.id}
-			className='suggestions-list-movie'>
-			{item.original_title || item.original_name}{' '}
-			{item.release_date ? '(Movie)' : '(Series)'}
-		</div>
-	));
+	const displaysugesstions = Suggestions.map((item) => {
+		if (item.media_type === 'tv' || item.media_type === 'movie') {
+			return (
+				<div
+					onClick={() => {
+						SET_DISPLAY_REM_SUGGESTION(item);
+						console.log(item);
+					}}
+					key={item.id}
+					className='suggestions-list-movie'>
+					{item.original_title || item.original_name}{' '}
+					{item.release_date ? '(Movie)' : '(Series)'}
+				</div>
+			);
+		}
+	});
 
 	return (
 		<>
@@ -100,7 +105,9 @@ function SearchBox() {
 							onChange={(e) => setUserInput(e.target.value)}
 						/>
 					</div>
-					<div className='suggestion-cont'>{showSuggestions && displaysugesstions}</div>
+					<div className='suggestion-cont'>
+						{showSuggestions && displaysugesstions}
+					</div>
 				</div>
 				<div onClick={() => setShowFavList(true)} className='my-watchlist-cont'>
 					<BiCameraMovie className='watch-list-icon' />
