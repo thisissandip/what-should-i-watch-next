@@ -21,19 +21,19 @@ function DisplayMovie({
 	const [togglebg1, settogglebg1] = useState(true);
 
 	const changebg = () => {
+		settogglebg1(!togglebg1);
+		const moviebg1 = document.querySelector('.movie-bg-2');
+		const moviebg = document.querySelector('.movie-bg');
 		if (togglebg1) {
-			const moviebg1 = document.querySelector('.movie-bg-2');
-			const moviebg = document.querySelector('.movie-bg');
 			moviebg.style.background = `url(https://image.tmdb.org/t/p/original${backdrop}) no-repeat top center`;
 			moviebg.style.backgroundSize = 'cover';
+			moviebg.style.opacity = '1';
 			moviebg1.style.opacity = '0';
-			settogglebg1(!togglebg1);
 		} else {
-			const moviebg1 = document.querySelector('.movie-bg-2');
 			moviebg1.style.background = `url(https://image.tmdb.org/t/p/original${backdrop}) no-repeat top center`;
 			moviebg1.style.backgroundSize = 'cover';
 			moviebg1.style.opacity = '1';
-			settogglebg1(!togglebg1);
+			moviebg.style.opacity = '0';
 		}
 	};
 

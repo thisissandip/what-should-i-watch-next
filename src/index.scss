@@ -46,7 +46,7 @@ body {
 .movie-bg {
 	position: absolute;
 	right: 0;
-	z-index: -3;
+	z-index: -3 !important;
 	width: 80%;
 	transition: 1.5s opacity ease-in;
 	height: 80vh;
@@ -55,7 +55,7 @@ body {
 .movie-bg-2 {
 	position: absolute;
 	right: 0;
-	z-index: -2;
+	z-index: -2 !important;
 	width: 80%;
 	transition: 1.5s opacity ease-in;
 	height: 80vh;

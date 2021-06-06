@@ -9,7 +9,7 @@ function Home() {
 		setTimeout(() => {
 			loaderRef.current.style.top = '-100vh';
 			setTimeout(() => {
-				loaderRef.current.style.opacity = '0';
+				loaderRef.current.style.display = 'none';
 			}, 1000);
 		}, 1500);
 	}, []);
@@ -23,7 +23,7 @@ function Home() {
 					viewBox='0 0 120 30'
 					xmlns='http://www.w3.org/2000/svg'
 					fill='#fff'>
-					<circle cx='15' cy='15' r='15'>
+					<circle cx='15' cy='15' r='15' fill='#e15b64'>
 						<animate
 							attributeName='r'
 							from='15'
@@ -45,7 +45,7 @@ function Home() {
 							repeatCount='indefinite'
 						/>
 					</circle>
-					<circle cx='60' cy='15' r='9' fill-opacity='0.3'>
+					<circle cx='60' cy='15' r='9' fill-opacity='0.3' fill='#f8b26a'>
 						<animate
 							attributeName='r'
 							from='9'
@@ -67,7 +67,7 @@ function Home() {
 							repeatCount='indefinite'
 						/>
 					</circle>
-					<circle cx='105' cy='15' r='15'>
+					<circle cx='105' cy='15' r='15' fill='#f8b26a'>
 						<animate
 							attributeName='r'
 							from='15'

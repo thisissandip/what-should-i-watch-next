@@ -37,6 +37,7 @@ function SuggestedMovie({ poster, item, setMainMovie, setshowSuggetions }) {
 
 		document.body.scrollTop = '0';
 		document.documentElement.scrollTop = '0';
+		//document.scrollingElement.scrollTop = '0';
 	};
 
 	return (
