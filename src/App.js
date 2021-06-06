@@ -1,6 +1,9 @@
 import React from 'react';
 import Home from './components/Home';
-import 'scroll-behavior-polyfill';
+import * as smoothscroll from 'smoothscroll-polyfill';
+
+// kick off the polyfill!
+smoothscroll.polyfill();
 
 function App() {
 	return (

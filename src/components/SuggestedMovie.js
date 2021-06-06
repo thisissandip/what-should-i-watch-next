@@ -35,9 +35,10 @@ function SuggestedMovie({ poster, item, setMainMovie, setshowSuggetions }) {
 		const mainmoviedeets = document.querySelector('.right-main-movie-details ');
 		mainmoviedeets.style.opacity = '0';
 
-		document.body.scrollTop = '0';
-		document.documentElement.scrollTop = '0';
-		//document.scrollingElement.scrollTop = '0';
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
 	};
 
 	return (
