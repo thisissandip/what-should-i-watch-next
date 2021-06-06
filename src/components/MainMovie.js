@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { FaStar } from 'react-icons/fa';
-import './MainMovie.css';
+import './mainmovie.scss';
 import MovieList from './MovieList';
 import useWidthHeight from './useWidth';
 

@@ -111,11 +111,10 @@ function DisplayMovie({
 				</div>
 			</div>
 			<div className='footer'>
-				Made with &#x1F496; by{' '}
+				Made with ❤️ by
 				<a href='https://github.com/thisissandip' target='_blank'>
-					{' '}
 					Sandip Mondal
-				</a>{' '}
+				</a>
 			</div>
 		</>
 	);

@@ -9,6 +9,19 @@ body {
 	background-color: #00020f;
 }
 
+.loading-wrapper {
+	position: absolute;
+	top: 0;
+	z-index: 999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
+	background-color: #00020f;
+	transition: 1.2s all ease;
+}
+
 #root {
 	width: 100%;
 	min-height: 100vh;
@@ -113,7 +126,7 @@ body {
 	transition: 0.5s transform cubic-bezier(0.19, 1, 0.22, 1);
 }
 .each-movie:hover {
-	box-shadow: 0 0 12px rgb(224, 8, 224, 0.5);
+	box-shadow: 0 0 12px rgba(224, 8, 224, 0.5);
 }
 
 .each-movie:hover > .remove-wrapper {
@@ -178,24 +191,18 @@ body {
 
 .footer {
 	color: white;
-	position: relative;
-	bottom: 0;
-	z-index: 5000;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	width: 100%;
 	background-color: #00020f;
-	font-size: 1rem;
-	margin-top: 4px;
 	font-family: var(--myfont);
-	padding-bottom: 7px;
-	padding-top: 1px;
+	margin: 20px 0;
 }
 
 .footer > a {
-	padding: 0 7px;
+	margin-left: 5px;
 	color: goldenrod;
-	margin-top: -1px;
 }
 
 /* 

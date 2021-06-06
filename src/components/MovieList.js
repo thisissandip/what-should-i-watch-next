@@ -86,16 +86,18 @@ function MovieList({
 					<div className='my-list-all-movies'>{allmovies}</div>
 				) : (
 					<div className='empty-list'>
-						Add Some Movies to your List. To Binge later with a bucket of
-						Popcorn. 🍿 <br /> Happy Binging!
+						Add some movies to your List to binge later with a bucket of
+						popcorn. 🍿 <br /> Happy Binging!
 					</div>
 				)}
 
-				<div className='my-list-btn-cont'>
-					<button onClick={CLEAR_LOCAL_STORAGE} className='clear-list'>
-						Remove All Movies
-					</button>
-				</div>
+				{FavList?.length > 0 && (
+					<div className='my-list-btn-cont'>
+						<button onClick={CLEAR_LOCAL_STORAGE} className='clear-list'>
+							Remove All Movies
+						</button>
+					</div>
+				)}
 			</div>
 		</>
 	);
