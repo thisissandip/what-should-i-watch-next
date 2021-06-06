@@ -2,7 +2,7 @@
 	"name": "interface",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://thisissandip.github.io/What-Should-I-Watch-Next",
+	"homepage": "https://thisissandip.github.io/what-should-i-watch-next",
 	"dependencies": {
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.5.0",
