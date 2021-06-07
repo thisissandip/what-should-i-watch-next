@@ -12,7 +12,7 @@ function MovieList({
 	useEffect(() => {
 		const mylistcont = document.querySelector('.my-movie-list-cont');
 		mylistcont.style.right = '0';
-		console.log(FavList);
+		//	console.log(FavList);
 	}, []);
 
 	const CLEAR_LOCAL_STORAGE = () => {

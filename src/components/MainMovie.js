@@ -46,7 +46,7 @@ function MainMovie({ alldetails, ShowFavList, setShowFavList, setMainMovie }) {
 		setTimeout(() => {
 			add_to_dom();
 		}, 1000);
-		console.log(alldetails);
+		//	console.log(alldetails);
 		return () => {
 			rem_frm_dom();
 		};
@@ -54,7 +54,7 @@ function MainMovie({ alldetails, ShowFavList, setShowFavList, setMainMovie }) {
 
 	useEffect(() => {
 		CHECK_IF_MAIN_MOVIE_IS_IN_LSTORAGE();
-		console.log(FavList);
+		//	console.log(FavList);
 	}, [FavList]);
 
 	const AddToList = () => {
@@ -81,7 +81,7 @@ function MainMovie({ alldetails, ShowFavList, setShowFavList, setMainMovie }) {
 		const Is_Current_Main_Fav = FavList.map(
 			(item) => item.id === alldetails.id
 		).filter(Boolean);
-		console.log(
+		/* 	console.log(
 			'Main Move fav? =',
 			Is_Current_Main_Fav[0]
 		); /*  <- Returns true if it Main is there  */

@@ -84,9 +84,9 @@ function DisplayMovie({
 		/>
 	));
 
-	useEffect(() => {
+	/* 	useEffect(() => {
 		console.log(moviesarray);
-	}, [moviesarray]);
+	}, [moviesarray]); */
 
 	return (
 		<>

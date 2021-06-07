@@ -75,7 +75,7 @@ function SearchBox() {
 				<div
 					onClick={() => {
 						SET_DISPLAY_REM_SUGGESTION(item);
-						console.log(item);
+						//	console.log(item);
 					}}
 					key={item.id}
 					className='suggestions-list-movie'>
