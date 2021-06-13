@@ -1,4 +1,4 @@
-const apiKEY = process.env.REACT_APP_API_KEY;
+const apiKEY = process.env.REACT_APP_TMDB_KEY;
 
 const endpoints = {
 	baseURL: `https://api.themoviedb.org/3/`,
