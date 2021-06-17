@@ -1,21 +1,22 @@
-# :popcorn: What Should I Watch Next
+# What Should I Watch Next
 
 Cannot find anything to watch?\
 Well, What Should I Watch Next is here to rescue.\
 Search for a Movie / TV show you really like or the last Movie / TV show you watched.\
 You will get a list of similar Movies / TV shows on the go!\
-Create your MovieList ( your customized list of TV shows and Movies) by clicking on the :heart:&nbsp;so you can binge later with a bucket full of popcorn :popcorn:
+Create your MovieList ( your customized list of TV shows and Movies) by clicking on the :heart: so you can binge later with a bucket full of popcorn :popcorn:
 
 ![What Should I Watch Next](./WhatShouldIWatchNext.gif)
 
-### Built with
+### 🧰 &nbsp; Built with
 
-- [React](https://reactjs.org/)
-- [Scss](https://sass-lang.com/)
-- [TMDB API](https://developers.themoviedb.org/3)
-- [Github Pages](https://pages.github.com/)
+- <a href="https://reactjs.org/" target="_blank">React</a>
+- <a href="https://sass-lang.com/" target="_blank">SCSS</a>
+- <a href="https://developers.themoviedb.org/3" target="_blank">TMDB API</a>
+- <a href="https://pages.github.com/" target="_blank">Github Pages</a>
 
-### Development setup
+
+### 🚀 &nbsp; Development setup
 
 1. Clone the repository
 
@@ -31,13 +32,13 @@ npm install
 
 3. Start Playing!
 
-### Usage
+### 👨‍💻 &nbsp; Usage
 
 - Search for Movies / TV shows
 - Add Movies / TV shows to your list
 - Delete Movies / TV shows from your list or Remove All
 
-### Contributing
+### 🤝 &nbsp; Contributing
 
 1. Fork it
 2. Create your feature branch (`git checkout -b feature/fooBar`)
