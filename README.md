@@ -4,7 +4,7 @@ Cannot find anything to watch?\
 Well, What Should I Watch Next is here to rescue.\
 Search for a Movie / TV show you really like or the last Movie / TV show you watched.\
 You will get a list of similar Movies / TV shows on the go!\
-Create your MovieList ( your customized list of TV shows and Movies) by clicking on the :heart: &nbsp; so you can binge later with a bucket full of popcorn :popcorn:
+Create your MovieList ( your customized list of TV shows and Movies) by clicking on the :heart: &nbsp;so you can binge later with a bucket full of popcorn :popcorn:
 
 ![What Should I Watch Next](./WhatShouldIWatchNext.gif)
 
