@@ -29,8 +29,12 @@ git clone https://github.com/thisissandip/what-should-i-watch-next.git
 ```
 npm install
 ```
+3. Add env variables in `.env` file
+```
+ REACT_APP_TMDB_KEY = your.api.key
+```
 
-3. Start Playing!
+4. Start Playing!
 
 ### 👨‍💻 &nbsp; Usage
 
